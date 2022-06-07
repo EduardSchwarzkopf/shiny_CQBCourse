@@ -1,0 +1,12 @@
+name = "shiny_CQBCourse";
+picture = "shiny_CQBCourse_Logo.paa";
+actionName = "Github";
+action = "https://github.com/EduardSchwarzkopf/shiny_CQBCourse";
+description = "Create you own CQB courses";
+logo = "shiny_CQBCourse_Logo.paa";
+logoOver = "shiny_CQBCourse_Logo.paa";
+tooltip = "shiny CQB Courses";
+tooltipOwned = "Owned by shiny";
+overview = "shiny CQB Courses gives mission makers the ability to create their own courses.";
+author = "shiny";
+overviewPicture = "shiny_CQBCourse_Logo.paa";
