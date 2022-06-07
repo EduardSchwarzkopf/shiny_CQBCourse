@@ -1,4 +1,4 @@
-name = "shiny_CQBCourse";
+name = "shiny CQB Course";
 picture = "shiny_CQBCourse_Logo.paa";
 actionName = "Github";
 action = "https://github.com/EduardSchwarzkopf/shiny_CQBCourse";
