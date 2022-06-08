@@ -1,7 +1,7 @@
-name = "shiny CQB Course";
+name = "shiny CQB Courses";
 picture = "shiny_CQBCourse_Logo.paa";
 actionName = "Github";
-action = "https://github.com/EduardSchwarzkopf/shiny_CQBCourse";
+action = "https://github.com/EduardSchwarzkopf/shiny_CQBCourses";
 description = "Create you own CQB courses";
 logo = "shiny_CQBCourse_Logo.paa";
 logoOver = "shiny_CQBCourse_Logo.paa";

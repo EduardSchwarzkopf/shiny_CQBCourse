@@ -1,6 +1,6 @@
 class CfgPatches
 {
-	class shiny_CQBCourse
+	class shiny_CQBCourses
 	{
 		// Meta information for editor
 		name = "shiny CQB Course";
@@ -20,7 +20,7 @@ class CfgFunctions
 	{
 		class CQBCourse
 		{
-			file = "\shiny_CQBCourse\functions";
+			file = "\shiny_CQBCourses\functions";
 			class registerTarget {};
 			class handleTargetHit {};
 			class courseStart {};
