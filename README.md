@@ -16,7 +16,8 @@ You can find a demo mission here: [Demo Mission](https://github.com/EduardSchwar
 
 The control panel can be any object, for example a laptop or a billboard. Give the object a variable name, this name also serves as a course name, e.g. **Your_Course_Name**.
 
-You can also add an addAction directly to the object to show the ranking: `this addAction ["Show Scoreboard", {(_this select 0) spawn shiny_fnc_showScoreboard}];`
+You can also add an addAction directly to the object to show the ranking:
+`this addAction ["Show Scoreboard", {(_this select 0) spawn shiny_fnc_showScoreboard}];`
 
 ### Step 2 - Starter Target
 
@@ -25,7 +26,8 @@ The unit closest to the target is taken as the runner.
 
 ### Step 3 - Set Targets
 
-At least one target must be placed for a course. This target must then be registered for the course. This follows with the following command in the init box of the target: `[this, <Your_Course_Name>, 0] spawn shiny_fnc_registerTarget;`
+At least one target must be placed for a course. This target must then be registered for the course. This follows with the following command in the init box of the target:
+`[this, <Your_Course_Name>, 0] spawn shiny_fnc_registerTarget;`
 
 Paremeters are as follows:
 
