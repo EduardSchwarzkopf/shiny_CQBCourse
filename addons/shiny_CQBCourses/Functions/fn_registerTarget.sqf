@@ -17,8 +17,8 @@ params ["_target", "_controlPanel", ["_addSeconds", 0]];
 
 if (isServer == false) exitWith {};
 
-_target addEventHandler ["Hit", {
 _target setVariable ["shiny_addSeconds", _addSeconds];
+_target addEventHandler ["Hit", {
 	params ["_target", "_unit", "_damage", "_instigator"];
 
 	if (isNil {_unit getVariable "shiny_course"} == false) then {
