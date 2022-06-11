@@ -15,9 +15,7 @@ _startTrigger addEventHandler ["Hit", {
 	_unitList = nearestObjects [_target, ["Man"], 20];
 	_unit = _unitList select 0;
 
-	for "_i" from 0 to count _unitList - 1 do {
-		(["Course -", _controlPanel, "- started for", (name _unit)] joinString " ") remoteExec ["hint", _unitList select _i];
-	};
+	["TimeTrialStarted", [str _controlPanel]] call BIS_fnc_showNotification;
 
 	_unit setVariable ["shiny_course", _controlPanel, true];
 	_controlPanel setVariable ["shiny_courseRunner", _unit, true];

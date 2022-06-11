@@ -19,6 +19,5 @@ if (_isHit == false && _addSeconds == 0) exitWith {
 	if(_cp getVariable "shiny_targetCount" == _newHitCount) then {
 		_unit call shiny_fnc_stopStopwatch;
 		[_unit, false] spawn shiny_fnc_courseFinished;
-		"Course finished" remoteExec ["hint", _unit];
 	};
 };

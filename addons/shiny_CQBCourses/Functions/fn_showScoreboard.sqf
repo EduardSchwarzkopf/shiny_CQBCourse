@@ -6,8 +6,6 @@ for "_i" from 1 to count _scoreList do {
 	_unitName = name (_item select 0); 
 	_totalTime = _item select 1;
 
-	_timeNowFormat = [_totalTime, "MM:SS.MS", TRUE] call BIS_fnc_secondsToString;
-	_timeFormat = [_timeNowFormat select 0, _timeNowFormat select 1, _timeNowFormat select 2] joinString ":";
-	
+	_timeFormat = _totalTime call shiny_fnc_formatTime;
 	_lnbEntries lnbAddRow [str _i, _unitName, _timeFormat];
 };
