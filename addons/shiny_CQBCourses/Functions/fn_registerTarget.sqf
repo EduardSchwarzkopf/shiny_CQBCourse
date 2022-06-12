@@ -13,24 +13,18 @@ Returns:
 	Nothing
 */
 
-params ["_target", "_controlPanel", ["_addSeconds", 0]];
+params ["_course", "_target"];
 
-if (isServer == false) exitWith {};
+if ((_target getVariable ["shiny_CQB_Course_AddSeconds",0]) isEqualTo 0) then {
+	_targetList = _course getVariable ["shiny_targetList", []];
+	_targetList pushBack _target;
+	_course setVariable ["shiny_targetList", _targetList, true];
+};
 
-_target setVariable ["shiny_addSeconds", _addSeconds];
 _target addEventHandler ["Hit", {
-	params ["_target", "_unit", "_damage", "_instigator"];
+	params ["_target", "_unit"];
 
 	if (isNil {_unit getVariable "shiny_course"} == false) then {
 		[_target, _unit] spawn shiny_fnc_handleTargetHit;
 	}
 }];
-
-if (_addSeconds isEqualTo 0) then {
-	_count = _controlPanel getVariable ["shiny_targetCount", 0];
-	_controlPanel setVariable ["shiny_targetCount", (_count + 1), true];
-};
-
-_targetList = _controlPanel getVariable ["shiny_targetList", []];
-_targetList pushBack _target;	
-_controlPanel setVariable ["shiny_targetList", _targetList, true];

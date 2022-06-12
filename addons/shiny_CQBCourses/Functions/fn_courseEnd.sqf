@@ -1,4 +1,7 @@
-params["_unit", "_canceled"];
+_unit = _this;
+// Stop time
+_unit call shiny_fnc_stopStopwatch;
+sleep 0.1; // Wait for stopwatch to finish
 
 _time = _unit getVariable ["shiny_StopwatchTime", 0];
 _errorSeconds = _unit getVariable["shiny_errorSeconds", 0];
@@ -8,21 +11,15 @@ _strTime = _totalTime call shiny_fnc_formatTime;
 
 ["TimeTrialEnded", [_strTime]] remoteExec ["BIS_fnc_showNotification", _unit];
 
-_result = "finished";
-if (_canceled) then {
-	_result = "canceled";
-};
-
 _storeTime = {
-	params["_cp", "_runner", "_totalTime"];
+	params["_course", "_runner", "_totalTime"];
 
-	_scoreList = _cp getVariable ["shiny_scoreList", []];
+	_scoreList = _course getVariable ["shiny_scoreList", []];
 	_index = 0;
 	_setRecord = true;
 	_isFaster = false;
 
 	for "_i" from 0 to count _scoreList - 1 do {
-		hint str _i;
 		_record = _scoreList select _i;
 		_unit = _record select 0;
 		_time = _record select 1;
@@ -52,20 +49,18 @@ _storeTime = {
 		_res;
 	};
 
-	systemChat (["_index:", _index, "_isFaster:", _isFaster] joinString " ");
-
 	if (_setRecord) then {
 		_newScoreList = [_scoreList, [_runner, _totalTime], _index] call shiny_fnc_insert;
-		_cp setVariable ["shiny_scoreList", _newScoreList, true];
+		_course setVariable ["shiny_scoreList", _newScoreList, true];
 
 	};
 };
 
-_cp = _unit getVariable "shiny_course";
-[_cp, _unit, _totalTime] spawn _storeTime;
+_course = _unit getVariable "shiny_course";
+[_course, _unit, _totalTime] spawn _storeTime;
 
 // Reset Course
-_cp spawn shiny_fnc_courseReset;
+_course spawn shiny_fnc_courseReset;
 
 _unit setVariable ["shiny_course", nil, true];
-_cp setVariable ["shiny_courseRunner", nil, true];
+_course setVariable ["shiny_courseRunner", nil, true];
