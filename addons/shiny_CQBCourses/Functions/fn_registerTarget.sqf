@@ -15,7 +15,7 @@ Returns:
 
 params ["_course", "_target"];
 
-if ((_target getVariable ["shiny_CQB_Course_AddSeconds",0]) isEqualTo 0) then {
+if ((_target getVariable ["shiny_CQBCourses_AddSeconds",0]) isEqualTo 0) then {
 	_targetList = _course getVariable ["shiny_targetList", []];
 	_targetList pushBack _target;
 	_course setVariable ["shiny_targetList", _targetList, true];

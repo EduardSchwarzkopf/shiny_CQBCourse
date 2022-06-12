@@ -1,6 +1,6 @@
 params["_target", "_unit"];
 
-_addSeconds = _target getVariable ["shiny_CQB_Course_AddSeconds", 0];;
+_addSeconds = _target getVariable ["shiny_CQBCourses_AddSeconds", 0];;
 _errorSeconds = _unit getVariable["shiny_errorSeconds", 0];
 
 _unit setVariable ["shiny_errorSeconds", (_errorSeconds + _addSeconds), true];

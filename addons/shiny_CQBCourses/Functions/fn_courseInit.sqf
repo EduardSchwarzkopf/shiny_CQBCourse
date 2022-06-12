@@ -15,7 +15,7 @@ _starterTarget = false;
 
 for "_i" from 0 to count _targetList - 1 do {
 	_item = _targetList # _i;
-	_isStartingTarget = _item isKindOf "shiny_CQB_StartingTarget";
+	_isStartingTarget = _item isKindOf "shiny_CQBStartingTarget";
 	if (_isStartingTarget) then {
 		_starterTarget = _item;
 		_course setVariable ["shiny_startingTarget", _item, true];

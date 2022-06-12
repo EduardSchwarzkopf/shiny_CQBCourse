@@ -19,10 +19,11 @@ class CfgFunctions
 {
 	class shiny
 	{
-		class CQBCourse
+		class CQBCourses
 		{
 			file = "\shiny_CQBCourses\functions";
 			class courseInit{};
+			class storeTime{};
 			class registerTarget {};
 			class handleTargetHit {};
 			class formatTime {};
@@ -62,17 +63,30 @@ class CfgVehicles {
 		};
 	};
 
+	class Land_BriefingRoomScreen_01_F;
+	class shiny_CQBCourses_Scoreboard: Land_BriefingRoomScreen_01_f
+	{
+		displayName = "CQB Course Scroreboard";
+		author = "shiny";
+		hiddenSelectionsTextures[] = { "\shiny_CQBCourses\Data\shiny_cqb_courses_scoreboard.paa" };
+		class EventHandlers
+        {
+			init="(_this select 0) addAction ['a useless action that does nothing', {}];";
+        };
+	};
+	
 	class Land_Target_Oval_F;
-	class shiny_CQB_StartingTarget: Land_Target_Oval_F
+	class shiny_CQBStartingTarget: Land_Target_Oval_F
 	{
 		displayName = "CQB Course Start";
+		author = "shiny";
 		class Attributes
 		{
-			class shiny_CQB_Course_RunnerPickerType
+			class shiny_CQBCourses_RunnerPickerType
 			{
 				displayName = "Pick nearest Unit?"; 
 				tooltip = "Course runner should be the neareast Unit to the starting Point? If disabled, the unit hitting the target will be picked"; 
-				property = "shiny_CQB_Course_RunnerPickerType"; 
+				property = "shiny_CQBCourses_RunnerPickerType"; 
 				control = "Checkbox"; 
 				expression = "_this setVariable [""shiny_runnerPickerType"",_value,true];";
 				defaultValue = "1";
@@ -94,12 +108,12 @@ class CfgVehicles {
 		class Attributes: Attributes
 		{
 			// Attribute class, can be anything
-			class shiny_CQB_CourseAddSeconds
+			class shiny_CQBCourseAddSeconds
 			{
 				//--- Mandatory properties
 				displayName = "Seconds"; // Name assigned to UI control class Title
 				tooltip = "Seconds to add, when target is Hit. Set a number above 0 to give a penalty, when this target is hit. Use negative numbers to give bonus seconds."; // Tooltip assigned to UI control class Title
-				property = "shiny_CQB_Course_AddSeconds"; // Unique config property name saved in SQM
+				property = "shiny_CQBCourses_AddSeconds"; // Unique config property name saved in SQM
 				control = "Edit"; // UI control base class displayed in Edit Attributes window, points to Cfg3DEN >> Attributes
 
 				// Expression called when applying the attribute in Eden and at the scenario start
@@ -107,7 +121,7 @@ class CfgVehicles {
 				// Entity is passed as _this, value is passed as _value
 				// %s is replaced by attribute config name. It can be used only once in the expression
 				// In MP scenario, the expression is called only on server.
-				expression = "_this setVariable ['shiny_CQB_Course_AddSeconds',_value];";
+				expression = "_this setVariable ['shiny_CQBCourses_AddSeconds',_value];";
 
 				// Expression called when custom property is undefined yet (i.e., when setting the attribute for the first time)
 				// Entity (unit, group, marker, comment etc.) is passed as _this
@@ -124,6 +138,8 @@ class CfgVehicles {
 			};
 		};
 	};
+
+
 
 
 
