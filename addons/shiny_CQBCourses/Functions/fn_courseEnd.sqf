@@ -1,3 +1,17 @@
+/*
+Author: Eduard Schwarzkopf
+
+Description:
+	Finishes the course for a unit
+
+Parameter:
+	0: Object - Player who runs the course
+
+Returns:
+	Nothing
+
+*/
+
 _unit = _this;
 // Stop time
 _unit call shiny_fnc_stopStopwatch;
@@ -12,7 +26,7 @@ _strTime = _totalTime call shiny_fnc_formatTime;
 ["TimeTrialEnded", [_strTime]] remoteExec ["BIS_fnc_showNotification", _unit];
 
 _course = _unit getVariable "shiny_course";
-[_unit, _totalTime] remoteExec ["shiny_fnc_storeTime", -2];
+[_course, _unit, _totalTime] remoteExec ["shiny_fnc_storeTime", 2];
 
 // Reset Course
 _course spawn shiny_fnc_courseReset;

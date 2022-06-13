@@ -10,5 +10,5 @@ Parameter:
 Returns:
 	Nothing
 */
-
-_this setVariable ["shiny_RunStopWatch", false, true];
+params["_unit"];
+_unit setVariable ["shiny_RunStopWatch", false, true];

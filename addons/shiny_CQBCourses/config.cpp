@@ -8,7 +8,7 @@ class CfgPatches
 
 		// Minimum compatible version. When the game's version is lower, pop-up warning will appear when launching the game. Note: was disabled on purpose some time late into Arma 2: OA.
 		requiredVersion = 1.66;
-		units[] = {"shiny_Module_CQB_Course"};
+		units[] = {"shiny_Module_CQBCourse"};
 	};
 };
 
@@ -24,6 +24,8 @@ class CfgFunctions
 			file = "\shiny_CQBCourses\functions";
 			class courseInit{};
 			class storeTime{};
+			class getCourseIdentifier{};
+			class initScoreboard {};
 			class registerTarget {};
 			class handleTargetHit {};
 			class formatTime {};
@@ -69,10 +71,6 @@ class CfgVehicles {
 		displayName = "CQB Course Scroreboard";
 		author = "shiny";
 		hiddenSelectionsTextures[] = { "\shiny_CQBCourses\Data\shiny_cqb_courses_scoreboard.paa" };
-		class EventHandlers
-        {
-			init="(_this select 0) addAction ['a useless action that does nothing', {}];";
-        };
 	};
 	
 	class Land_Target_Oval_F;
@@ -139,12 +137,7 @@ class CfgVehicles {
 		};
 	};
 
-
-
-
-
-
-	class shiny_Module_CQB_Course : Module_F
+	class shiny_Module_CQBCourse : Module_F
 	{
 		author = "shiny";
         category = "shiny_CQB";

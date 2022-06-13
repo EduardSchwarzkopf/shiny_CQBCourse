@@ -2,22 +2,28 @@ params["_course", "_runner", "_totalTime"];
 
 if (!isServer) exitWith {}; // Just to be sure
 
-_scoreList = _course getVariable ["shiny_scoreList", []];
+_courseName = _course getVariable "Name";
+_varName = _courseName call shiny_fnc_getCourseIdentifier;
+_scoreList = profileNamespace getVariable [_varName, []];
+
 _index = 0;
 _setRecord = true;
 _isFaster = false;
+_runnerID = getPlayerID _runner;
 
 for "_i" from 0 to count _scoreList - 1 do {
 	_record = _scoreList select _i;
-	_unit = _record select 0;
-	_time = _record select 1;
+	
+	_pid = _record select 0;
+	_time = _record select 2;
+
 	_isFaster = _time > _totalTime;
 
 	if (_isFaster isEqualTo false) then {
 		_index = _i;
 	};
 
-	if (_runner isEqualTo _unit) then {
+	if (_runnerID isEqualTo _pid) then {
 		if (_isFaster isEqualTo false) then {
 			_setRecord = false;
 		} else {
@@ -38,9 +44,6 @@ _shiny_fnc_insert = {
 };
 
 if (_setRecord) then {
-	_newScoreList = [_scoreList, [_runner, _totalTime], _index] call _shiny_fnc_insert;
-	_name = _course getVariable "Name";
-	_varName = ["shiny_CQBCourses_Score_", _name] joinString "";
-
-	profileNamespace setVariable [_varName, _newScoreList, true];
+	_newScoreList = [_scoreList, [_runnerID, name _runner, _totalTime], _index] call _shiny_fnc_insert;
+	profileNamespace setVariable [_varName, _newScoreList];
 };

@@ -4,6 +4,7 @@ if (isServer == false) exitWith {};
 _course = param [0,objNull,[objNull]];
 _targetList = param [1,[],[[]]];
 
+//handle name
 _name = _course getVariable ["Name",""];
 if (_name isEqualTo "") then {
 	_name = _course call BIS_fnc_objectVar;
@@ -12,17 +13,23 @@ if (_name isEqualTo "") then {
 
 // handle Targets
 _starterTarget = false;
-
 for "_i" from 0 to count _targetList - 1 do {
 	_item = _targetList # _i;
-	_isStartingTarget = _item isKindOf "shiny_CQBStartingTarget";
-	if (_isStartingTarget) then {
-		_starterTarget = _item;
-		_course setVariable ["shiny_startingTarget", _item, true];
+
+	if (_item isKindOf "TargetBase") then {
+
+		if (_item isKindOf "shiny_CQBStartingTarget") then {
+			_starterTarget = _item;
+			_course setVariable ["shiny_startingTarget", _item, true];
+			continue;
+		};
+
+		[_course, _item] spawn shiny_fnc_registerTarget;
+		continue;
 	};
 
-	if (_item isKindOf "TargetBase" && _isStartingTarget isEqualTo false) then {
-		[_course, _item] spawn shiny_fnc_registerTarget;
+	if (_item isKindOf "shiny_CQBCourses_Scoreboard") then {
+		[_course, _item] spawn shiny_fnc_initScoreboard;
 	};
 };
 
