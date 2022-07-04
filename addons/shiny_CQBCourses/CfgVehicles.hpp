@@ -76,7 +76,7 @@ class CfgVehicles {
         isGlobal = 1;
         isTriggerActivated = 0;
         isDisposable = 0;
-        icon = "";
+		icon = "\a3\Modules_F_Curator\Data\iconCountdown_ca.paa";
         class Arguments {
             class Name {
                 displayName = "Name";
